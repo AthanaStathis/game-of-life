@@ -18,5 +18,17 @@ public class Board {
     }
 
     public int countCellsLivingNeighbors(int row, int col) {
+        int numberOfLivingNeighbors = 0;
+        for (int adjacentRow = row - 1; adjacentRow <= row + 1; adjacentRow +=1) {
+            for (int adjacentCol = col - 1 ; adjacentCol <= col + 1; adjacentCol += 1) {
+                if(!(adjacentRow == row && adjacentCol == col)) {
+                    if(cellPointLiesInLattice(adjacentRow, adjacentCol) &&
+                            lattice[adjacentRow][adjacentCol].getState().equals("0")) {
+                        numberOfLivingNeighbors++;
+                    }
+                }
+            }
+        }
+        return numberOfLivingNeighbors;
     }
 }
