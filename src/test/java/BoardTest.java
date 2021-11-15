@@ -76,4 +76,18 @@ public class BoardTest {
         board.initializeLattice(testLatticeZero);
         assertFalse(board.cellPointLiesInLattice(x, y));
     }
+
+    @ParameterizedTest(name = "Cell:[{0},{1}], Expected living-neigborgs:{2}")
+    @CsvSource({
+            // Cell-row, cell-column, number of living neighbors
+            "0,0,2", "0,1,3", "0,2,2",
+            "1,0,1", "1,1,2", "1,2,1",
+            "2,0,2", "2,1,3", "2,2,2"
+    })
+    void method_countNumberOfLivingNeighbors_returns_proper_number_of_living_neighboring_cells_for_both_alive_and_dead_cells_for_initial_lattice
+            (int row, int col, int expectedNumberOfLivingNeighbors) {
+        Board board = new Board();
+        board.initializeLattice(testLatticeZero);
+        assertEquals(board.countCellsLivingNeighbors(row, col), expectedNumberOfLivingNeighbors);
+    }
 }
