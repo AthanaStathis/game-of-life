@@ -12,4 +12,20 @@ public class Cell {
     public String getState() {
         return state;
     }
+
+    public String updateCellsState(int numberOfLivingNeighbors) {
+        if (this.state.equals("0")) {
+            if (numberOfLivingNeighbors > 1 && numberOfLivingNeighbors < 4)
+                this.state = "0";
+            else
+                this.state = ".";
+        }
+        else {
+            if (numberOfLivingNeighbors  == 3)
+                this.state = "0";
+            else
+                this.state = ".";
+        }
+        return this.state;
+    }
 }

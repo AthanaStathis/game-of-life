@@ -29,8 +29,8 @@ class CellTest {
             ".,3,0",
             ".,4,."
     })
-    void update_Cell_state_as_function_of_living_neigbors(String initialState, int numberOfNeigbors, String state) {
+    void update_Cell_state_as_function_of_living_neigbors(String initialState, int numberOfLivingNeighbors, String state) {
         Cell cell = new Cell(initialState);
-        assertEquals(cell.updateCellsState(numberOfNeigbors), state);
+        assertEquals(cell.updateCellsState(numberOfLivingNeighbors), state);
     }
 }
