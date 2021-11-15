@@ -31,4 +31,7 @@ public class Board {
         }
         return numberOfLivingNeighbors;
     }
+
+    public void getNextGeneration() {
+    }
 }
