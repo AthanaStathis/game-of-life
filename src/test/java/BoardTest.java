@@ -104,4 +104,18 @@ public class BoardTest {
         board.initializeLattice(testLatticeOne);
         assertEquals(board.countCellsLivingNeighbors(row, col), expectedNumberOfLivingNeighbors);
     }
+
+    @ParameterizedTest(name = "Cell:[{0},{1}]")
+    @CsvSource({
+            "0,0", "0,1", "0,2",
+            "1,0", "1,1", "1,2",
+            "2,0", "2,1", "2,2"
+    })
+    void get_next_generation_applied_to_board_with_initial_lattice_gives_board_with__generation_one_lattice
+            (int row, int col) {
+        Board board = new Board();
+        board.initializeLattice(testLatticeZero);
+        board.getNextGeneration();
+        assertEquals(board.lattice[row][col].getState(), firstGenerationLattice[row][col]);
+    }
 }
