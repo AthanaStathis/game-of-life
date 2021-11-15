@@ -2,6 +2,7 @@ public class Board {
     public Cell[][] lattice;
     int latticeHeight = 0;
     int latticeWidth = 0;
+    private int[][] getCellsLivingNeighbors;
 
     public Board() {
 
@@ -32,17 +33,32 @@ public class Board {
         return numberOfLivingNeighbors;
     }
 
-    public void getNextGeneration() {
-        int[][] latticeWithLivingNeigborsOfEveryCell = new int[latticeWidth][latticeHeight];
+    private int[][] getCellsLivingNeighbors() {
+        int[][] matrixWithLivingNeigborsOfEveryCell = new int[latticeWidth][latticeHeight];
         for (int i = 0; i < latticeHeight; i++) {
             for (int j = 0; j < latticeWidth; j++) {
-                latticeWithLivingNeigborsOfEveryCell[i][j] = countCellsLivingNeighbors(i,j);
+                matrixWithLivingNeigborsOfEveryCell[i][j] = countCellsLivingNeighbors(i,j);
             }
         }
+        return matrixWithLivingNeigborsOfEveryCell;
+    }
+    
+    public void getNextGeneration() {
+        int[][] getNumberOfLivingNeighborsOfCell = this.getCellsLivingNeighbors();
         for (int i = 0; i < latticeHeight; i++) {
             for (int j = 0; j < latticeWidth; j++) {
-                lattice[i][j].updateCellsState(latticeWithLivingNeigborsOfEveryCell[i][j]);
+                lattice[i][j].updateCellsState(getNumberOfLivingNeighborsOfCell[i][j]);
             }
+        }
+    }
+
+    public void printLattice() {
+        System.out.println("================================");
+        for (int i = 0; i < latticeHeight; i++) {
+            for (int j = 0; j < latticeWidth; j++) {
+                System.out.print(lattice[i][j].getState()+" ");
+            }
+            System.out.println();
         }
     }
 }
