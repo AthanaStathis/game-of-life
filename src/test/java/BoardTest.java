@@ -118,4 +118,18 @@ public class BoardTest {
         board.getNextGeneration();
         assertEquals(board.lattice[row][col].getState(), firstGenerationLattice[row][col]);
     }
+
+    @ParameterizedTest(name = "Cell:[{0},{1}]")
+    @CsvSource({
+            "0,0", "0,1", "0,2",
+            "1,0", "1,1", "1,2",
+            "2,0", "2,1", "2,2"
+    })
+    void get_next_generation_applied_to_first_generation_boards_lattice_gives_board_with_second_generation_lattice
+            (int row, int col) {
+        Board board = new Board();
+        board.initializeLattice(testLatticeOne);
+        board.getNextGeneration();
+        assertEquals(board.lattice[row][col].getState(), secondGenerationLattice[row][col]);
+    }
 }
