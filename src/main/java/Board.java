@@ -13,4 +13,6 @@ public class Board {
         this.latticeWidth = lattice[0].length;
     }
 
+    public boolean cellPointLiesInLattice(int x, int y) {
+    }
 }
