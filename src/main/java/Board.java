@@ -13,6 +13,7 @@ public class Board {
         this.latticeWidth = lattice[0].length;
     }
 
-    public boolean cellPointLiesInLattice(int x, int y) {
+    public boolean cellPointLiesInLattice(int row, int col) {
+        return row >= 0 && col >= 0 && row < latticeHeight && col < latticeWidth;
     }
 }
