@@ -50,4 +50,16 @@ public class BoardTest {
         board.initializeLattice(testLatticeOne);
         assertEquals(board.lattice[row][col].getState(), expectedState);
     }
+
+    @ParameterizedTest(name = "Point:[{0},{1}] belongs to 3x3 matrix")
+    @CsvSource({
+            "0,0", "0,1", "0,2",
+            "1,0", "1,1", "1,2",
+            "2,0", "2,1", "2,2"
+    })
+    void method_cellPointLiesInLattice_returns_true_when_coordinates_are_valid_gen0_lattice_points_(int x, int y) {
+        Board board = new Board();
+        board.initializeLattice(testLatticeZero);
+        assertTrue(board.cellPointLiesInLattice(x, y));
+    }
 }
