@@ -16,4 +16,7 @@ public class Board {
     public boolean cellPointLiesInLattice(int row, int col) {
         return row >= 0 && col >= 0 && row < latticeHeight && col < latticeWidth;
     }
+
+    public int countCellsLivingNeighbors(int row, int col) {
+    }
 }
