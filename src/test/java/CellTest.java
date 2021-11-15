@@ -16,4 +16,21 @@ class CellTest {
         cell.setState(newState);
         assertEquals(cell.getState(), expectedState);
     }
+
+    @ParameterizedTest(name = "Number of Neigbors: {index} => Initial State={0} Resulting Cell State={1}")
+    @CsvSource({
+            "0,0, .",
+            "0,1, .",
+            "0,2, 0",
+            "0,3, 0",
+            "0,4, .",
+            ".,1,.",
+            ".,2,.",
+            ".,3,0",
+            ".,4,."
+    })
+    void update_Cell_state_as_function_of_living_neigbors(String initialState, int numberOfNeigbors, String state) {
+        Cell cell = new Cell(initialState);
+        assertEquals(cell.updateCellsState(numberOfNeigbors), state);
+    }
 }
