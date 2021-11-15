@@ -33,5 +33,16 @@ public class Board {
     }
 
     public void getNextGeneration() {
+        int[][] latticeWithLivingNeigborsOfEveryCell = new int[latticeWidth][latticeHeight];
+        for (int i = 0; i < latticeHeight; i++) {
+            for (int j = 0; j < latticeWidth; j++) {
+                latticeWithLivingNeigborsOfEveryCell[i][j] = countCellsLivingNeighbors(i,j);
+            }
+        }
+        for (int i = 0; i < latticeHeight; i++) {
+            for (int j = 0; j < latticeWidth; j++) {
+                lattice[i][j].updateCellsState(latticeWithLivingNeigborsOfEveryCell[i][j]);
+            }
+        }
     }
 }
